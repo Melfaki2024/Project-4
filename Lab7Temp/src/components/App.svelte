@@ -29,6 +29,8 @@
         const response = await fetch('Caps-Trans.csv');
         const capBudData = await response.text();
         const capData = d3.csvParse(capBudData, rowConverter);
+
+        console.log(capData)
         
         // set the dimensions and margins of the graph
         const margin = {top: 50, right: 10, bottom: 110, left: 90},
