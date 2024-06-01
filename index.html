@@ -5,31 +5,6 @@
 
 <script>
   d3.csv('Caps-Trans.csv').then( function(data) {
-        function rowConverter(d) {
-          return {
-            'Categories': d['Categories'],
-            'Public Utilities': +d['Public Utilities'], // Convert to number
-            'Transportation': +d['Transportation'], 
-            'Parks & Recreation': +d['Parks & Recreation'],
-            'Stormwater': +d['Stormwater'],
-            'Environmental Services': +d['Environmental Services'],
-            'Citywide': +d['Citywide'],
-            'Fire-Rescue': +d['Fire-Rescue'],
-            'General Services': +d['General Services'],
-            'Department of Information Technology': +d['Department of Information Technology'],
-            'Library': +d['Library'],
-            'Airport Management': +d['Airport Management'],
-            'Sustainability & Mobility': +d['Sustainability & Mobility'],
-            'Police': +d['Police'],
-            'Homelessness Strategies and Solutions': +d['Homelessness Strategies and Solutions'],
-            'Real Estate Assets': +d['Real Estate Assets'],
-          };
-        }
-
-        // const response = await fetch('Caps-Trans.csv');
-        // const capBudData = await response.text();
-        // const capData = d3.csvParse(capBudData, rowConverter);
-        
         // set the dimensions and margins of the graph
         const margin = {top: 50, right: 10, bottom: 110, left: 90},
             width = 460 - margin.left - margin.right,
@@ -77,8 +52,6 @@
         const stackedData = d3.stack()
           .keys(subgroups)
           (data)
-
-        console.log(stackedData)
 
         // ----------------
         // Create a tooltip
@@ -198,6 +171,147 @@
             .on("mousemove", mousemove2)
             .on("mouseleave", mouseleave2)
       });
+
+
+  var data = [];
+  
+  d3.csv('Storm-Trans.csv').then( function(data) {
+  
+    const subgroups_storm = Object.values(data[0])
+    
+    // set the dimensions and margins of the graph
+    const width = 450,
+        height = 450,
+        margin = 40;
+
+    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+    const radius = Math.min(width, height) / 2 - margin;
+
+    // append the svg object to the div called 'my_dataviz'
+    const svg = d3.select("#sliding_pie")
+      .append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", `translate(${width/2}, ${height/2})`);
+
+    // create 2 data_set
+        var data1 = data[1];
+        delete data1[""];
+        var data2 = data[2];
+        delete data2[""];
+        var data3 = data[3];
+        delete data3[""];
+        var data4 = data[4];
+        delete data4[""];
+        var data5 = data[5];
+        delete data5[""];
+        var data6 = data[6];
+        delete data6[""];
+        var data7 = data[7];
+        delete data7[""];
+        var data8 = data[8];
+        delete data8[""];
+        var data9 = data[9];
+        delete data9[""];
+        var data10 = data[10];
+        delete data10[""];
+        var data11 = data[11];
+        delete data11[""];
+        var data12 = data[12];
+        delete data12[""];
+        var data13 = data[13];
+        delete data13[""];
+        var data14 = data[14];
+        delete data14[""];
+        var data15 = data[15];
+        delete data15[""];
+
+
+    // set the color scale
+    const color = d3.scaleOrdinal()
+      .domain([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+      .range(['#000080','#87CEFA','#DC143C', '#FFA500', '#8FBC8F', '#90EE90', '#FF0000', '#F4A460', '#006400', '#6B8E23', '#800080', '#FFC0CB'])
+
+    const tooltip3 = d3.select("#sliding_pie")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "1px")
+        .style("border-radius", "5px")
+        .style("padding", "10px")
+      
+
+    // Three function that change the tooltip when user hover / move / leave a cell
+    const mouseover3 = function(event, d) {
+      tooltip3
+        .html(subgroups_storm[d.data[0]] + ": $" + d.data[1])
+        .style("opacity", 1)
+
+    }
+    const mousemove3 = function(event, d) {
+      tooltip3.style("transform","translateY(-55%)")
+            .style("left",(event.x)/2+"px")
+            .style("top",(event.y)/2-30+"px")
+    }
+    const mouseleave3 = function(event, d) {
+      tooltip3
+        .style("opacity", 0)
+    }
+
+    // A function that create / update the plot for a given variable:
+    function update(index) {
+
+      // Compute the position of each group on the pie:
+      const pie = d3.pie()
+        .value(function(d) {return d[1]; })
+        .sort(function(a, b) { return d3.ascending(a.key, b.key);} ) // This make sure that group order remains the same in the pie chart
+      const data_ready = pie(Object.entries(data[index]))
+
+      // map to data
+      const u = svg.selectAll("path")
+        .data(data_ready)
+
+      // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+      u.join(
+        enter => enter.append('path')
+          .on("mouseover", mouseover3)
+          .on("mousemove", mousemove3)
+          .on("mouseleave", mouseleave3)
+          .attr('d', d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius)
+          )
+          .attr('fill', function(d){ return color(d.data[0]); })
+          .attr("stroke", "white")
+          .style("stroke-width", "2px")
+          .style("opacity", 0)
+          .transition()
+          .duration(2000)
+          .style("opacity", 1),
+        update => update.transition()
+          .duration(2000)
+          .attrTween('d', function(d) {
+            const interpolate = d3.interpolate(this._current, d);
+            this._current = interpolate(0);
+            return function(t) {
+              return d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius)(interpolate(t));
+            };
+          })
+      );
+    }
+
+    window.update = update;
+
+    // Initialize the plot with the first dataset
+    update(1)
+
+
+  });
 </script>
 
 <main>
@@ -207,7 +321,22 @@
   <div id="chart1" ></div>
   <p>From the bar chart, one can assess a stark change in the amount of money utilized. Specifically, certain subsections have grown exponentially when compared to others. Observing the orange section of the bar chart, the budget for stormwater has seen considerable growth in the past 15 years, going from roughly 2 million in 2010 to 84 million in 2025. It goes from unnoticeable to a substantial portion of the overall budget. This massive uptick in investment for stormwater is something that should be a cause for concern as it now makes up almost a fifth of total expenditures; this is in addition to rising concerns over climate change especially in coastal cities. The bar chart below illustrates the trend in stormwater spending. The pie chart below breaks down which projects the stormwater budget funded.</p>
   <div id="chart2" ></div>
-  <p>Placeholder for sliding pie chart</p>
+  <button onclick="update(1)">2010-2011</button>
+  <button onclick="update(2)">2011-2012</button>
+  <button onclick="update(3)">2012-2013</button>
+  <button onclick="update(4)">2013-2014</button>
+  <button onclick="update(5)">2014-2015</button>
+  <button onclick="update(6)">2015-2016</button>
+  <button onclick="update(7)">2016-2017</button>
+  <button onclick="update(8)">2017-2018</button>
+  <button onclick="update(9)">2018-2019</button>
+  <button onclick="update(10)">2019-2020</button>
+  <button onclick="update(11)">2020-2021</button>
+  <button onclick="update(12)">2021-2022</button>
+  <button onclick="update(13)">2022-2023</button>
+  <button onclick="update(14)">2023-2024</button>
+  <button onclick="update(15)">2024-2025</button>
+  <div id="sliding_pie"></div>
   <p>Similar to the growth of the stormwater subsection, the subsection “Drainage Projects” begins to dominate the spending pool for stormwater. But why? According to The Voice of San Diego, a nonprofit news organization based in San Diego, “... Much of our infrastructure is reaching the end of its useful life and is crumbling due to a lack of funding for repair and maintenance“ (citation). This assessment gives reason as to the investment growth but it can be substantiated even more. Another source, 10 News San Diego, details the historical underfunding of stormwater infrastructure disclosing a statement from the San Diego City’s Stormwater Department, it reads:</p>
   <p>“...all infrastructure, the system has aged and deteriorated. The impacts of these failures in San Diego communities are felt not only when it rains, but year-round as they can cause sinkholes, erosion along coastlines, and pollution backing up into streets and alleys”</p>
   <p>A statement like this showcases the sort of consequences that can come from historic misspending. It highlights a discrepancy in the way the taxpayers money is being spent. Furthermore, these effects are disproportionately affecting low income neighborhoods which, in the past year, have suffered greatly from increasing rainfall.</p>
