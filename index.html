@@ -338,40 +338,59 @@
 </script>
 
 <main>
-  <h1>San Diego Residents: Where Are Your Tax Dollars Going?</h1>
-  <h2>Analyzing The San Diego City Budget for Weather Emergencies</h2>
-  <p>Every year on April 15, residents of the United States turn in their tax forms, handing over a large portion of their income to the federal, state, and local governments. Around the same time, those residents start asking the burning question: Where is my money going? The capital budget of the city of San Diego is utilized to fund long-term investments and projects; these include but are not limited to public utilities, transportation, as well as parks & recreational facilities. The City of San Diego government site hosts a database which details how much money goes into these investments between the years 2010 to 2024 as well as the proposed budget for 2025. The capital budget within these years has grown, with respect to inflation, by approximately 50 percent. The total adopted budget, split up by asset owning department, for each year between 2010 and 2024, along with the proposed budget for 2025, is displayed below:</p>
-  <div id="chart1" ></div>
-  <p>From the bar chart, one can assess a stark change in the amount of money utilized. Specifically, certain subsections have grown exponentially when compared to others. Observing the orange section of the bar chart, the budget for stormwater has seen considerable growth in the past 15 years, going from roughly 2 million in 2010 to 84 million in 2025. It goes from unnoticeable to a substantial portion of the overall budget. This massive uptick in investment for stormwater is something that should be a cause for concern as it now makes up almost a fifth of total expenditures; this is in addition to rising concerns over climate change especially in coastal cities. The bar chart below illustrates the trend in stormwater spending. The pie chart below breaks down which projects the stormwater budget funded.</p>
-  <div id="chart2" ></div>
-  <div id="sliding_pie" ></div>
-  <button onclick="update(1)">2010-2011</button>
-  <button onclick="update(2)">2011-2012</button>
-  <button onclick="update(3)">2012-2013</button>
-  <button onclick="update(4)">2013-2014</button>
-  <button onclick="update(5)">2014-2015</button>
-  <button onclick="update(6)">2015-2016</button>
-  <button onclick="update(7)">2016-2017</button>
-  <button onclick="update(8)">2017-2018</button>
-  <button onclick="update(9)">2018-2019</button>
-  <button onclick="update(10)">2019-2020</button>
-  <button onclick="update(11)">2020-2021</button>
-  <button onclick="update(12)">2021-2022</button>
-  <button onclick="update(13)">2022-2023</button>
-  <button onclick="update(14)">2023-2024</button>
-  <button onclick="update(15)">2024-2025</button>
-  <p>Similar to the growth of the stormwater subsection, the subsection “Drainage Projects” begins to dominate the spending pool for stormwater based on total dollars. $80 Million will be allocated to drainage projects in 2025. But why? According to The Voice of San Diego, a nonprofit news organization based in San Diego, “... Much of our infrastructure is reaching the end of its useful life and is crumbling due to a lack of funding for repair and maintenance“ (<a href="https://voiceofsandiego.org/2024/03/06/the-january-storms-prove-we-cant-put-off-funding-stormwater-infrastructure-anymore/">Voice of San Diego</a>). This assessment gives reason as to the investment growth but it can be substantiated even more. Another source, <a href="https://www.10news.com/news/local-news/san-diego-news/city-documents-outline-stormwater-drain-problem-including-historic-underfunding">10 News San Diego</a>, details the historical underfunding of stormwater infrastructure disclosing a statement from the San Diego City’s Stormwater Department, it reads:</p>
-  <p>“...all infrastructure, the system has aged and deteriorated. The impacts of these failures in San Diego communities are felt not only when it rains, but year-round as they can cause sinkholes, erosion along coastlines, and pollution backing up into streets and alleys”</p>
-  <p>A statement like this showcases the sort of consequences that can come from historic misspending. It highlights a discrepancy in the way the taxpayers money is being spent. Furthermore, these effects are disproportionately affecting low income neighborhoods which, in the past year, have suffered greatly from increasing rainfall.</p>
-  <p>Exploring interactive visualizations such as the bar and pie charts in this article can bridge the gap between data and real world events, and allow for a deeper understanding of the social and political circumstances that surround us in our city.</p>
+  <center>
+    <div class = "center-wrapper">
+      <h1>San Diego Residents: Where Are Your Tax Dollars Going?</h1>
+      <h2>Analyzing The San Diego City Budget for Weather Emergencies</h2>
+      <p>Every year on April 15, residents of the United States turn in their tax forms, handing over a large portion of their income to the federal, state, and local governments. Around the same time, those residents start asking the burning question: Where is my money going? The capital budget of the city of San Diego is utilized to fund long-term investments and projects; these include but are not limited to public utilities, transportation, as well as parks & recreational facilities. The City of San Diego government site hosts a database which details how much money goes into these investments between the years 2010 to 2024 as well as the proposed budget for 2025. The capital budget within these years has grown, with respect to inflation, by approximately 50 percent. The total adopted budget, split up by asset owning department, for each year between 2010 and 2024, along with the proposed budget for 2025, is displayed below:</p>
+      <div id="chart1" ></div>
+      <p>From the bar chart, one can assess a stark change in the amount of money utilized. Specifically, certain subsections have grown exponentially when compared to others. Observing the orange section of the bar chart, the budget for stormwater has seen considerable growth in the past 15 years, going from roughly 2 million in 2010 to 84 million in 2025. It goes from unnoticeable to a substantial portion of the overall budget. This massive uptick in investment for stormwater is something that should be a cause for concern as it now makes up almost a fifth of total expenditures; this is in addition to rising concerns over climate change especially in coastal cities. The bar chart below illustrates the trend in stormwater spending. The pie chart below breaks down which projects the stormwater budget funded.</p>
+      <div id="chart2" ></div>
+      <div id="sliding_pie" ></div>
+      <button onclick="update(1)">2010-2011</button>
+      <button onclick="update(2)">2011-2012</button>
+      <button onclick="update(3)">2012-2013</button>
+      <button onclick="update(4)">2013-2014</button>
+      <button onclick="update(5)">2014-2015</button>
+      <button onclick="update(6)">2015-2016</button>
+      <button onclick="update(7)">2016-2017</button>
+      <button onclick="update(8)">2017-2018</button>
+      <button onclick="update(9)">2018-2019</button>
+      <button onclick="update(10)">2019-2020</button>
+      <button onclick="update(11)">2020-2021</button>
+      <button onclick="update(12)">2021-2022</button>
+      <button onclick="update(13)">2022-2023</button>
+      <button onclick="update(14)">2023-2024</button>
+      <button onclick="update(15)">2024-2025</button>
+      <p>Similar to the growth of the stormwater subsection, the subsection “Drainage Projects” begins to dominate the spending pool for stormwater based on total dollars. $80 Million will be allocated to drainage projects in 2025. But why? According to The Voice of San Diego, a nonprofit news organization based in San Diego, “... Much of our infrastructure is reaching the end of its useful life and is crumbling due to a lack of funding for repair and maintenance“ (<a href="https://voiceofsandiego.org/2024/03/06/the-january-storms-prove-we-cant-put-off-funding-stormwater-infrastructure-anymore/">Voice of San Diego</a>). This assessment gives reason as to the investment growth but it can be substantiated even more. Another source, <a href="https://www.10news.com/news/local-news/san-diego-news/city-documents-outline-stormwater-drain-problem-including-historic-underfunding">10 News San Diego</a>, details the historical underfunding of stormwater infrastructure disclosing a statement from the San Diego City’s Stormwater Department, it reads:</p>
+      <p class = "quote">“...all infrastructure, the system has aged and deteriorated. The impacts of these failures in San Diego communities are felt not only when it rains, but year-round as they can cause sinkholes, erosion along coastlines, and pollution backing up into streets and alleys”</p>
+      <p>A statement like this showcases the sort of consequences that can come from historic misspending. It highlights a discrepancy in the way the taxpayers money is being spent. Furthermore, these effects are disproportionately affecting low income neighborhoods which, in the past year, have suffered greatly from increasing rainfall.</p>
+      <p>Exploring interactive visualizations such as the bar and pie charts in this article can bridge the gap between data and real world events, and allow for a deeper understanding of the social and political circumstances that surround us in our city.</p>  
+    </div>
+  </center>
 </main>
+
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
   body {
-    font-family: "Bebas Neue", sans-serif;
+    font-family: proxima-nova, sans-serif;
+    .center-wrapper p {
+
+      max-width: 800px;
+
+      text-align: left;
+
+      font-size: 1.2em; 
+
+    }
+    p.quote {
+      margin-left: 20px !important;  
+      margin-right: 20px !important;
+    }
   }
+
 </style>
 
 </html>
