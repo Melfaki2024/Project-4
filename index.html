@@ -36,6 +36,14 @@
           .attr("transform", "rotate(-45)")
           .style("text-anchor", "end");
 
+          svg1.append("text")
+          .attr("x", 150) 
+          .attr("y", -20)  
+          .attr("text-anchor", "middle")  
+          .style("font-size", "14px") 
+          .style("font-family", "Arial") 
+          .text("San Diego Capital Budget Allocations 2010-2025, Split by Department");
+
         // Add Y axis
         const y = d3.scaleLinear()
           .domain([0, 1000000000])
@@ -120,6 +128,14 @@
           .selectAll("text")
           .attr("transform", "rotate(-45)")
           .style("text-anchor", "end");
+
+        svg2.append("text")
+          .attr("x", 150) 
+          .attr("y", -20)  
+          .attr("text-anchor", "middle")  
+          .style("font-size", "14px") 
+          .style("font-family", "Arial") 
+          .text("San Diego Capital Budget Allocation for Stormwater 2010-2025");
 
         // Add Y axis
         const y2 = d3.scaleLinear()
@@ -243,6 +259,13 @@
         .style("border-radius", "5px")
         .style("padding", "10px")
       
+    svg.append("text")
+      .attr("x", 0) 
+      .attr("y", -200)  
+      .attr("text-anchor", "middle")  
+      .style("font-size", "14px") 
+      .style("font-family", "Arial") 
+      .text("San Diego Stormwater Budget Allocations 2010-2025 by Project");    
 
     // Three function that change the tooltip when user hover / move / leave a cell
     const mouseover3 = function(event, d) {
@@ -321,6 +344,7 @@
   <div id="chart1" ></div>
   <p>From the bar chart, one can assess a stark change in the amount of money utilized. Specifically, certain subsections have grown exponentially when compared to others. Observing the orange section of the bar chart, the budget for stormwater has seen considerable growth in the past 15 years, going from roughly 2 million in 2010 to 84 million in 2025. It goes from unnoticeable to a substantial portion of the overall budget. This massive uptick in investment for stormwater is something that should be a cause for concern as it now makes up almost a fifth of total expenditures; this is in addition to rising concerns over climate change especially in coastal cities. The bar chart below illustrates the trend in stormwater spending. The pie chart below breaks down which projects the stormwater budget funded.</p>
   <div id="chart2" ></div>
+  <div id="sliding_pie" ></div>
   <button onclick="update(1)">2010-2011</button>
   <button onclick="update(2)">2011-2012</button>
   <button onclick="update(3)">2012-2013</button>
@@ -336,11 +360,10 @@
   <button onclick="update(13)">2022-2023</button>
   <button onclick="update(14)">2023-2024</button>
   <button onclick="update(15)">2024-2025</button>
-  <div id="sliding_pie"></div>
-  <p>Similar to the growth of the stormwater subsection, the subsection “Drainage Projects” begins to dominate the spending pool for stormwater. But why? According to The Voice of San Diego, a nonprofit news organization based in San Diego, “... Much of our infrastructure is reaching the end of its useful life and is crumbling due to a lack of funding for repair and maintenance“ (citation). This assessment gives reason as to the investment growth but it can be substantiated even more. Another source, 10 News San Diego, details the historical underfunding of stormwater infrastructure disclosing a statement from the San Diego City’s Stormwater Department, it reads:</p>
+  <p>Similar to the growth of the stormwater subsection, the subsection “Drainage Projects” begins to dominate the spending pool for stormwater based on total dollars. $80 Million will be allocated to drainage projects in 2025. But why? According to The Voice of San Diego, a nonprofit news organization based in San Diego, “... Much of our infrastructure is reaching the end of its useful life and is crumbling due to a lack of funding for repair and maintenance“ (<a href="https://voiceofsandiego.org/2024/03/06/the-january-storms-prove-we-cant-put-off-funding-stormwater-infrastructure-anymore/">Voice of San Diego</a>). This assessment gives reason as to the investment growth but it can be substantiated even more. Another source, <a href="https://www.10news.com/news/local-news/san-diego-news/city-documents-outline-stormwater-drain-problem-including-historic-underfunding">10 News San Diego</a>, details the historical underfunding of stormwater infrastructure disclosing a statement from the San Diego City’s Stormwater Department, it reads:</p>
   <p>“...all infrastructure, the system has aged and deteriorated. The impacts of these failures in San Diego communities are felt not only when it rains, but year-round as they can cause sinkholes, erosion along coastlines, and pollution backing up into streets and alleys”</p>
   <p>A statement like this showcases the sort of consequences that can come from historic misspending. It highlights a discrepancy in the way the taxpayers money is being spent. Furthermore, these effects are disproportionately affecting low income neighborhoods which, in the past year, have suffered greatly from increasing rainfall.</p>
-  <p>Conclusion paragraph</p>
+  <p>Exploring interactive visualizations such as the bar and pie charts in this article can bridge the gap between data and real world events, and allow for a deeper understanding of the social and political circumstances that surround us in our city.</p>
 </main>
 
 <style>
